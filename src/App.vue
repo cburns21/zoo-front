@@ -2,19 +2,51 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/cops">Cop Profiles</router-link> |
+      <router-link to="/districts">District Map</router-link> |
+      <router-link to="/cases">Ongoing Cases</router-link> 
     </div>
-    <router-view/>
+    <router-view :zootopiaCops='zootopiaCops' :zootopiaCases='zootopiaCases'/>
+    
   </div>
 </template>
 
+
+<script>
+export default {
+  data() {
+    return {
+      zootopiaCops: null,
+      zootopiaCases: null
+    }
+  },
+  methods: {
+    getZootopiaCops() {
+      fetch('http://localhost:3000/cops')
+      .then(resp => resp.json())
+      .then(resp => this.zootopiaCops = resp)
+    },
+    getZootopiaCases() {
+      fetch('http://localhost:3000/cases')
+      .then(resp => resp.json())
+      .then(resp => this.zootopiaCases = resp)
+    }
+  },
+  mounted() {
+    this.getZootopiaCops()
+    this.getZootopiaCases()
+  }
+}
+</script>
+
+
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: 'Amaranth', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: navy;
 }
 #nav {
   padding: 30px;
@@ -26,6 +58,6 @@
 }
 
 #nav a.router-link-exact-active {
-  color: #42b983;
+  color: navy;
 }
 </style>

@@ -1,7 +1,8 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <img alt="Police" src="../assets/badge.png">
+    <HelloWorld msg="Zootopia Police Department"/>
+    <h3>Dedicated to serving all the animals of Zootopia</h3>
   </div>
 </template>
 
@@ -16,3 +17,10 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .home {
+    font-family: 'Amaranth', sans-serif;
+  }
+  
+</style>
